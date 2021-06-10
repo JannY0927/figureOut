@@ -11,6 +11,7 @@ let levelBoard;
 let IsdragObject = false;
 let actLevel ;
 let DragObj;
+let clickVoice;
 
 $(document).ready(function () {
 
@@ -25,6 +26,7 @@ $(document).ready(function () {
 
     init();
 
+    clickVoice  = $('#clickVoice');
     shape1x1Square  = $('<img src="1x1square.jpg" id="shape1x1Square">');
     shape1x1Square1 = $('<img src="1x1square.jpg" id="shape1x1Square">');
     shape1x1Square2 = $('<img src="1x1square.jpg" id="shape1x1Square">');
@@ -556,6 +558,7 @@ function mousedown(evMd) {
                 evMd.clientY > $(this).offset().top && evMd.clientY < $(this).offset().top + $(this).height()) {
                 console.log('Yeeee');
                 IsdragObject = true;
+                document.getElementById("clickVoice").play();
                 console.log('Átadandó');
                 console.log($(this))
                 DragObj = $(this);
