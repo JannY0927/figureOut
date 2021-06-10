@@ -1,0 +1,221 @@
+#div1{
+    visibility: hidden;
+    border: solid black 1px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width:500px;
+    height:0;
+    animation: div 1s 1;
+}
+
+
+#div2{
+    visibility: visible;
+    border: solid black 1px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width:500px;
+    height:800px;
+    animation: canv1 2s 1;
+}
+
+#text{
+    margin: 0px;
+    width: 500px;
+    position: absolute;
+    animation: startOther 2s 1;
+}
+
+#game1{
+    margin-left: 50px;
+    margin-top: 120px;
+    border: solid black 1px;
+    background-color: #ffffcc;
+    width: 400px;
+    height: 290px;
+    position: absolute;
+    animation: startOther 2s 1;
+}
+
+
+
+#game2{
+    margin-left: 50px;
+    margin-top: 410px;
+    border: solid black 1px;
+    background-color: #e6ecff;
+    width: 400px;
+    height: 290px;
+    position: absolute;
+    animation: startOther 2s 1;
+}
+
+
+
+#score{
+    margin-left: 50px;
+    margin-top: 720px;
+    border: solid black 1px;
+    background-color: #e6ecff;
+    width: 400px;
+    height: 60px;
+    position: absolute;
+    animation: startOther 2s 1;
+}
+
+
+#start {
+    width: 200px;
+    height: 100px;
+    margin-left: 100px;
+    margin-top: 100px;
+    position: relative;
+    border: solid black 1px;
+    border-radius: 50px;
+}
+
+label{
+    font-size: 40px;
+}
+
+.end,.next{
+    font-size: 28px;
+}
+
+#endbutton,#nextbutton{
+    margin-left: 28%;
+    margin-top: 6%;
+    width: 150px;
+}
+
+
+p{
+    visibility: hidden;
+    vertical-align: center;
+    color: white;
+    text-align: center;
+    font-size: xx-large;
+    animation: panimation 1s 1;
+}
+
+.toplisttitle {
+    visibility: visible;
+    text-align: center;
+    color: black;
+    text-align: center;
+    font-size: 30px;
+    animation: none;
+    margin: 10px;
+}
+
+
+.toplist {
+    visibility: visible;
+    vertical-align: center;
+    color: black;
+    font-size: 20px;
+    text-align: center;
+    border: solid black  1px;
+    animation: none;
+    margin: 5px;
+}
+
+#endlevelP {
+    visibility: visible;
+    vertical-align: center;
+    color: black;
+    text-align: center;
+    font-size: 30px;
+    animation: none;
+    margin: 10px;
+}
+
+
+#Scoretitle{
+    visibility: visible;
+    vertical-align: center;
+    color: black;
+    text-align: center;
+    font-size: large;
+    float: left;
+    margin-left: 100px;
+}
+
+#ScoreValue{
+    visibility: visible;
+    vertical-align: center;
+    color: black;
+    text-align: center;
+    font-size: large;
+    float: left;
+    margin-left: 20px;
+}
+
+
+
+#title{
+    margin-top: 30px;
+    visibility:visible;
+    vertical-align: center;
+    color: black;
+    text-align: center;
+    font-size: 50px;
+    animation: startOther 2s 1;
+}
+
+
+@keyframes panimation {
+    0% {
+        visibility: visible;
+        color: black;
+    }
+    100% {
+        visibility: hidden;
+        color: white;
+    }
+}
+
+
+@keyframes div {
+    0% {
+        visibility: visible;
+        height:800px;
+    }
+    99% {
+    }
+    100% {
+        visibility: hidden;
+        height:0;
+    }
+}
+
+
+@keyframes canv1 {
+    0% {
+        visibility: hidden;
+        height: 0;
+    }
+    100% {
+        visibility: visible;
+        height: 800px;
+    }
+}
+
+@keyframes startOther {
+    0% {
+        opacity: 0;
+    }
+
+
+    60% {
+        opacity: 0.001;
+    }
+
+
+    100% {
+        opacity: 1;
+    }
+}
+
