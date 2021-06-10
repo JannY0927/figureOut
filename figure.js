@@ -113,7 +113,8 @@ function level1() {
         borderStyle: 'solid',
         width: 80,
         height: 300,
-        position: 'absolute'
+        position: 'absolute',
+        background: '#e6ecff'
     });
     level1board.addClass('levelboard');
     levelSpace.append(level1board);
@@ -160,8 +161,9 @@ function level2() {
         top: 34,
         borderStyle: 'solid',
         width: 80,
-        height: 300,
-        position: 'absolute'
+        height: 253,
+        position: 'absolute',
+        background: '#e6ecff'
     });
     levelboard.addClass('levelboard');
     levelSpace.append(levelboard);
@@ -210,8 +212,9 @@ function level3() {
         top: 34,
         borderStyle: 'solid',
         width: 110,
-        height: 300,
-        position: 'absolute'
+        height: 253,
+        position: 'absolute',
+        background: '#e6ecff'
     });
     levelboard.addClass('levelboard');
     levelSpace.append(levelboard);
@@ -280,8 +283,9 @@ function level4() {
         top: 34,
         borderStyle: 'solid',
         width: 110,
-        height: 300,
-        position: 'absolute'
+        height: 253,
+        position: 'absolute',
+        background: '#e6ecff'
     });
     levelboard.addClass('levelboard');
     levelSpace.append(levelboard);
@@ -376,7 +380,8 @@ function level5() {
         borderStyle: 'solid',
         width: 172,
         height: 253,
-        position: 'absolute'
+        position: 'absolute',
+        background: '#e6ecff'
     });
     levelboard.addClass('levelboard');
     levelSpace.append(levelboard);
@@ -523,10 +528,12 @@ function mousemove(event) {
             });
 
             if (isCrash) {
+                alert('Az alakzatok ne érjenek egymáshoz!')
                 levelDraw(actLevel);
             }
         } else {
             IsdragObject = false;
+            alert('A kék felületen mozoghatsz!')
             levelDraw(actLevel);
         }
     }
@@ -651,204 +658,3 @@ function fillToplist() {
     locationOfShape.append(htmlCode);
     $("#start").show();
 }
-
-/*
-function mousemove_defender(e) {
-    // a div offset lekerese a pontos egerpozicio megadashoz a div-en belul
-    let div_pos = locationOfShape.offset();
-    // az x egerpozicio meghatarozasa a defender kozepere
-    // annak vizsgalata, hogy meg a jatekteruleten belul vagyunk-e
-    if (mouse_pos_x > 0 && mouse_pos_x < div_pos.width - shape2x2Square.width/2 &&
-        mouse_pos_ > 0 && mouse_pos_x < div_pos.width - shape2x2Square.width/2) {
-        defender.css({
-            left: mouse_pos_x,
-            top: mouse_pos_y,
-        });
-    }
-
-
-
-function main() {
-    c =  document.getElementById("canv1");
-    var ctx = c.getContext("2d");
-    c.addEventListener('mousemove', mouseMove,false);
-    c.addEventListener('mousedown', objmove);
-    c.addEventListener('mouseup', objLet);
-    console.log(c);
-    var titleImg = new Image();
-    titleImg.src = 'title.png';
-    var squar11 = new Image();
-    squar11.src = '1x1square.jpg';
-    var squar12 = new Image();
-    var squar21 = new Image();
-    var squar22 = new Image();
-    var squar11L = new Image();
-    var holdObject = false;
-    var dx1x1 = 70;
-    var dy1x1 = 480;
-    var isStartGame = false
-
-
-    animate()
-
-
-
-
-    function animate() {
-        window.requestAnimationFrame(draw);
-        setTimeout(animate,4000);
-     //   console.log(animate)
-    }
-
-    function draw() {
-        drawBackground();
-        drawTitle();
-        drawBoard();
-        if (!isStartGame)
-            drawStart();
-
-    }
-
-
-    function mouseMove(){
-        var rect = c.getBoundingClientRect();
-        var mouseX = ev.clientX - rect.left;
-        var mouseY = ev.clientY - rect.top;
-      //  console.log('X: ' +mouseX + ' X: ' + mouseY + 'width ' + c.width);
-
-        if (   (mouseX >= 50 && mouseX <= 450-30 && mouseY >= 460 && mouseY <= 750-30 && holdObject)||
-               (mouseX >= 220 && mouseX <= 300-30 && mouseY >= 410 && mouseY <= 470-30 && holdObject)){
-            dx1x1 = mouseX;
-            dy1x1 = mouseY;
-            drawSquar1x1(dx1x1,dy1x1);
-        }
-    }
-
-    //ctx.fillRect(220, 410, 80, 60);
-
-    function objmove(evc){
-        console.log("klikkelésX "+evc.clientX + "klikkelésY " + evc.clientY);
-        var rect = c.getBoundingClientRect();
-        if (evc.clientX >= 150+rect.left && evc.clientX <= 350+rect.left
-            && evc.clientY+rect.top >= 235 && evc.clientY<=285+rect.top) {
-            isStartGame = true;
-            drawBoard();
-            drawSquar1x1(dx1x1,dy1x1);
-        };
-        if (evc.clientX >= dx1x1+rect.left && evc.clientX <= dx1x1+30+rect.left
-            && evc.clientY+rect.top >= dy1x1 && evc.clientY<=dy1x1+30+rect.top) {
-            console.log('objektum1jee');
-            holdObject = true;
-            console.log('holdObject'+ holdObject);
-        };
-    }
-
-    function objLet(evd) {
-        holdObject = false;
-    }
-
-   //var canvasWeight = c.getAttribute('width');
-   // console.log(canvasWeight);
-
-    function drawBackground() {
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, 0, 500, 800);
-    }
-
-    function drawStart() {
-        ctx.fillStyle = '#000000';
-        ctx.font = '40px serif';
-        ctx.fillText('StartGame',170,270) ;
-        ctx.fillStyle = '#000000';
-        ctx.rect(150,235,200,50);
-        ctx.stroke();
-    }
-
-
-    function drawBoard() {
-        ctx.fillStyle = '#ffffcc';
-        ctx.fillRect(50, 120, 400, 290);
-        ctx.fillStyle = '#e6ecff';
-        ctx.fillRect(220, 410, 80, 60);
-        ctx.fillStyle = '#e6ecff';
-        ctx.fillRect(50, 460, 400, 290);
-      //  drawlevel();
-    }
-
-
-
-    function drawTitle() {
-            drawBackground()
-            ctx.drawImage(titleImg, 75, 37);
-    }
-
-    function drawSquar1x1(x,y) {
-            ctx.drawImage(squar11,x,y);
-        }
-
-    function drawSquar1x2() {
-        squar12.onload = function () {
-            ctx.drawImage(squar12, 120, 480);
-        }
-
-        squar12.src = '1x2square.jpg';
-    }
-
-    function drawSquar2x1() {
-        squar21.onload = function () {
-            ctx.drawImage(squar21, 200, 480);
-        }
-        squar21.src = '2x1square.jpg';
-    }
-
-    function drawSquar2x2() {
-        squar22.onload = function () {
-            ctx.drawImage(squar22, 250, 480);
-        }
-        squar22.src = '2x2square.jpg';
-    }
-
-    function drawSquar1x1L() {
-        squar11L.onload = function () {
-            ctx.drawImage(squar11L, 330, 480);
-            ctx.drawImage(squar11L, 330, 510);
-            ctx.drawImage(squar11L, 360, 480);
-        }
-        squar11L.src = '1x1Lsquare.jpg';
-    }
-/*
-        for (var i=0;i<10;i++) {
-          if (70+i*50<=canvasWeight-50) {
-               console.log("Rajz01");
-               squar11L.onload = function () {
-                   console.log("Rajz1");
-                   ctx.drawImage(squar11, 70 + i * 50, 530);
-               }
-           }
-           else
-            console.log('ide'+i);
-            squar11L.onload (
-                ctx.drawImage(squar11,70+i*50-(canvasWeight),590));
-
-    }
-
-
-        ctx.moveTo(50,30);
-        ctx.lineTo(200,100);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.arc(300,300,50,45/180*Math.PI,Math.PI);
-
-        ctx.beginPath();
-        ctx.font = "40px Arial"
-        ctx.fillText("Hello",100,100)
-        ctx.strokeText("Hello2",250,250);
-
-        ctx.fillStyle = grad;
-        ctx.fillRect(100,100,200,200);
-
-        var img = new  Image();
-        img.onload = function () {
-        ctx.drawImage(img,200,200);
-    }
-        img.src = 'icon.webp';*/
